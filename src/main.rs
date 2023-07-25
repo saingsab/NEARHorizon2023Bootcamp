@@ -72,6 +72,30 @@ fn main() {
     let x: Option<i32> = wrap(1);
     let x: Option<&str> = wrap("Hello");
 
+    trait Speak {
+        fn say(&self) -> &'static str;
+    }
+
+    struct Cat;
+    struct Dog;
+
+    impl Speak for Cat {
+        fn say(&self) -> &'static str {
+            "Meow"
+        }
+    }
+
+    impl Speak for Dog {
+        fn say(&self) -> &'static str {
+            "Vous"
+        }
+    }
+
+    let d = Dog;
+    let c = Cat;
+
+    println!("{}", d.say());
+    println!("{}", c.say());
 }
 
 fn fib(n: usize) -> u64 {
