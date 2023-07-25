@@ -22,8 +22,62 @@ fn main() {
 
    let mut my_vec: Vec<i32> = vec![1, 2, 3];
 
-//    pushing item in to vec
-Vec::push(&mut my_vec, 42);
-println!("{my_vec:?}");
+    //    pushing item in to vec
+    Vec::push(&mut my_vec, 42);
+    println!("{my_vec:?}");
 
+    struct Book {
+        title: Box<str>,
+        author: String,
+        published_year: u32,
+    }
+
+    // control flow
+    
+    let mut x = 2;
+    if 2 == x {
+        println!("match works");
+    } else {
+        println!("else statment");
+    }
+
+    // for i int 0.. = 10 {
+    //     println!("{i}");
+    // }
+    let my_no = 2000u32;
+    let my_u8 = u8::try_from(my_no);
+
+    match my_u8 {
+        Ok(converted_value) => {
+            println!("{converted_value}");
+        }
+        Err(error_value) => {
+            println!("{error_value:?}");
+        }
+    }
+
+    println!("{}", fib(5));
+    // similar to empty tuple or void type of c
+    fn print_greeting(name: &str) -> () {
+        println!("Hello, {name}!");
+    }
+
+    let x = print_greeting("Encode club");
+    println!("{x:?}");
+
+    fn wrap<T>(val: T) ->Option<T> {
+        Some(val)
+    }
+
+    let x: Option<i32> = wrap(1);
+    let x: Option<&str> = wrap("Hello");
+
+}
+
+fn fib(n: usize) -> u64 {
+    if n == 0 || n == 1 {
+        return 1;
+    } else {
+        return fib(n - 1) + fib(n - 2);
+    };
 }
