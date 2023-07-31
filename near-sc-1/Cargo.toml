@@ -1,6 +1,7 @@
 [package]
 name = "near-sc-1"
 version = "0.1.0"
+authors = ["Ayoung <saing.sab@gmail.com>"]
 edition = "2021"
 
 [dependencies]
