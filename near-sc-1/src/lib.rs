@@ -1,39 +1,30 @@
 use near_sdk::borsh::{self, BorshSerialize, BorshDeserialize};
-use near_sdk::{near_bindgen, PanicOnDefault, BorshStorageKey};
-// use near_sdk::env;
-use near_sdk::store::*;
+use near_sdk::collections::Vector;
+use near_sdk::{near_bindgen, PanicOnDefault};
+use near_sdk::env;
 
-#[derive(Debug, BorshDeserialize, BorshSerialize, PanicOnDefault)]
+#[derive(Debug, BorshSerialize, BorshDeserialize, PanicOnDefault)]
 #[near_bindgen]
 struct Contract {
     number: u8,
     list: Vector<u8>,
 }
 
-#[derive(BorshSerialize, BorshStorageKey)]
-enum StorageKey {
-    Vector,    
-}
-
 #[near_bindgen]
 impl Contract {
     #[init]
     pub fn new() -> Self {
-        Self {
-            number: 0,
-            list: Vector::new(0),
-        }
+        Self { number: 0, list: Vector::new(0) }
     }
 
     pub fn get_number(&self) -> u8 {
         self.number
     }
 
-   // #[private] //this entry can be called from action (contract owner)
     pub fn increment(&mut self) {
         self.number += 1;
     }
-}
+} 
 
 // cfg(test) this will exluded in the wasm file when build to deploy
 #[cfg(test)]
