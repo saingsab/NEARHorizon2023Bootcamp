@@ -11,5 +11,5 @@ adding few dependency on Cargo.toml
 build the contract for deployment
 
 ```
-cargo build -target -- 
+cargo build --release --target wasm32-unknown-unknown
 ```
