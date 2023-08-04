@@ -1,5 +1,6 @@
 use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
 use near_sdk::collections::Vector;
+use near_sdk::BorshStorageKey;
 use near_sdk::env;
 use near_sdk::{near_bindgen, PanicOnDefault};
 
@@ -10,13 +11,18 @@ struct Contract {
     list: Vector<u8>,
 }
 
+#[derive(BorshSerialize, BorshStorageKey)]
+enum StorageKey {
+    Vector,
+}
+
 #[near_bindgen]
 impl Contract {
     #[init]
     pub fn new() -> Self {
         Self {
             number: 0,
-            list: Vector::new(0),
+            list: Vector::new(StorageKey::Vector),
         }
     }
 
@@ -24,6 +30,7 @@ impl Contract {
         self.number
     }
 
+    #[private]
     pub fn increment(&mut self) {
         self.number += 1;
     }

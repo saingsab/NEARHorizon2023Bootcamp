@@ -21,7 +21,7 @@ impl Contract {
     pub fn new() -> Self {
         Self {
             number: 0,
-            list: Vector::new(0),
+            list: Vector::new(StorageKey::Vector),
         }
     }
 
