@@ -1,7 +1,7 @@
-use near_sdk::borsh::{self, BorshSerialize, BorshDeserialize};
+use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
 use near_sdk::collections::Vector;
-use near_sdk::{near_bindgen, PanicOnDefault};
 use near_sdk::env;
+use near_sdk::{near_bindgen, PanicOnDefault};
 
 #[derive(Debug, BorshSerialize, BorshDeserialize, PanicOnDefault)]
 #[near_bindgen]
@@ -14,7 +14,10 @@ struct Contract {
 impl Contract {
     #[init]
     pub fn new() -> Self {
-        Self { number: 0, list: Vector::new(0) }
+        Self {
+            number: 0,
+            list: Vector::new(0),
+        }
     }
 
     pub fn get_number(&self) -> u8 {
@@ -24,7 +27,7 @@ impl Contract {
     pub fn increment(&mut self) {
         self.number += 1;
     }
-} 
+}
 
 // cfg(test) this will exluded in the wasm file when build to deploy
 #[cfg(test)]
