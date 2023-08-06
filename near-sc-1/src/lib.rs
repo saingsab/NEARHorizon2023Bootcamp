@@ -1,8 +1,7 @@
 use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
 use near_sdk::collections::Vector;
-use near_sdk::BorshStorageKey;
 use near_sdk::env;
-use near_sdk::{near_bindgen, PanicOnDefault};
+use near_sdk::{near_bindgen, PanicOnDefault, BorshStorageKey};
 
 #[derive(Debug, BorshSerialize, BorshDeserialize, PanicOnDefault)]
 #[near_bindgen]
